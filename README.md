@@ -5,16 +5,16 @@
 
 ## Outputs
 
+##### Age Calculation - Date of Birth 4/22/2000
 ```
-Age Calculation - Date of Birth (4/22/2000)
-
 -------- Year 2020 ---------
 Present Date: 4/17/2020; Age: 19
 Present Date: 4/22/2020; Age: 20
 Present Date: 5/7/2020; Age: 20
+```
 
-Age Calculation of Leaplings - Date of Birth (2/29/1960)
-
+##### Age Calculation of Leaplings - Date of Birth 2/29/1960
+```
 -------- Leap Year-2020 ---------
 Present Date: 2/28/2020; Age: 59
 Present Date: 2/29/2020; Age: 60
