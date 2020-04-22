@@ -1,9 +1,9 @@
 # A simple extesion method to calculate a person's age
-## Features
+### Features
 * Supports leap years and leap date of birth
 * An optional parameter to specify whether Feb 28 or March 1 should be considered as date of birth for leaplings.
 
-## Outputs
+### Outputs
 
 ###### Age Calculation - Date of Birth 4/22/2000
 ```
