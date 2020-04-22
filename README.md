@@ -15,12 +15,12 @@ Present Date: 5/7/2020; Age: 20
 
 ###### Age Calculation of Leaplings - Date of Birth 2/29/1960
 ```
--------- Leap Year-2020 ---------
+-------- Leap Year 2020 ---------
 Present Date: 2/28/2020; Age: 59
 Present Date: 2/29/2020; Age: 60
 Present Date: 3/1/2020; Age: 60
 
--------- Normal Year-2021 --------
+-------- Normal Year 2021 --------
 Present Date: 2/28/2021; Age: 61 - Celebrated on Feb 28
 Present Date: 2/28/2021; Age: 60 - Celebrated on March 1
 Present Date: 3/1/2021; Age: 61 - Celebrated on March 1
