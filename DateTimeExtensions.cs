@@ -20,27 +20,25 @@ namespace example.Extensions
         /// <param name="dob">The date of birth of the person.</param>
         /// <param name="leapling">Indicates the leap birth celebration day.</param>
         /// <param name="presentDate">The present date. If not set defaults to <see cref="DateTime.Now"/>.</param>
-        /// <returns>The age of the person.</returns>
-        public static int CalculateAge(
-            this DateTime dob,
+        /// <returns></returns>
+        public static int CalculateAge(this DateTime dob,
             Leaplings leapling = Leaplings.Feb28,
             DateTime? presentDate = null)
         {
-            presentDate ??= DateTime.Now;
+            presentDate ??= DateTime.Now.ToPacificDate();
             var age = presentDate.Value.Year - dob.Year;
+            
+            // handle the case were dob is in a leap year, present date 
+            //  not a leap year and dob should be celebrated on Feb 28.
             if (leapling == Leaplings.Feb28 &&
                 !DateTime.IsLeapYear(presentDate.Value.Year) &&
                 DateTime.IsLeapYear(dob.Year) &&
                 dob.DayOfYear == 60 &&
-                presentDate.Value.DayOfYear == 59)
-            {
-                return age;
-            }
+                presentDate.Value.DayOfYear == 59) return age;
+            
+            // handle all other cases.
+            if (presentDate.Value.DayOfYear < dob.DayOfYear) return age - 1;
 
-            if (presentDate.Value.DayOfYear < dob.DayOfYear)
-            {
-                return age - 1;
-            }
             return age;
         }
     }
