@@ -18,17 +18,17 @@ namespace example.Extensions
         /// Calculate the age of a person based on date of birth.
         /// </summary>
         /// <param name="dob">The date of birth of the person.</param>
-        /// <param name="leaplings">Indicates the leap birth celebration day.</param>
+        /// <param name="leapling">Indicates the leap birth celebration day.</param>
         /// <param name="presentDate">The present date. If not set defaults to <see cref="DateTime.Now"/>.</param>
         /// <returns>The age of the person.</returns>
         public static int CalculateAge(
             this DateTime dob,
-            Leaplings leaplings = Leaplings.Feb28,
+            Leaplings leapling = Leaplings.Feb28,
             DateTime? presentDate = null)
         {
             presentDate ??= DateTime.Now;
             var age = presentDate.Value.Year - dob.Year;
-            if (leaplings == Leaplings.Feb28 &&
+            if (leapling == Leaplings.Feb28 &&
                 !DateTime.IsLeapYear(presentDate.Value.Year) &&
                 DateTime.IsLeapYear(dob.Year) &&
                 dob.DayOfYear == 60 &&
