@@ -25,7 +25,7 @@ namespace example.Extensions
             Leaplings leaplings = Leaplings.Feb28,
             DateTime? presentDate = null)
         {
-            presentDate ??= DateTime.Now.ToPacificDate();
+            presentDate ??= DateTime.Now;
             var age = presentDate.Value.Year - dob.Year;
             if (leaplings == Leaplings.Feb28 &&
                 !DateTime.IsLeapYear(presentDate.Value.Year) &&
