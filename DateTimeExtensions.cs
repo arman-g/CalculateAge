@@ -1,44 +1,56 @@
 namespace example.Extensions
 {
-    public enum Leaplings
+    [DebuggerDisplay(
+        nameof(Years) + " = {" + nameof(Years) + "}, " +
+        nameof(Months) + " = {" + nameof(Months) + "}, " +
+        nameof(Days) + " = {" + nameof(Days) + "}")]
+    public class Age
     {
-        /// <summary>
-        /// Celebrated on Feb 28.
-        /// </summary>
-        Feb28,
-        /// <summary>
-        /// Celebrated on March 1.
-        /// </summary>
-        March1
-    }
+        public ushort Years { get; set; }
+        public byte Months { get; set; }
+        public byte Days { get; set; }
 
-    public static class DateTimeExtensions
-    {
-        /// <summary>
-        /// Calculate the age of a person based on date of birth.
-        /// </summary>
-        /// <param name="dob">The date of birth of the person.</param>
-        /// <param name="leapling">Indicates the leap birth celebration day.</param>
-        /// <param name="presentDate">The present date. If not set defaults to <see cref="DateTime.Now"/>.</param>
-        /// <returns>The age of the person in number of years.</returns>
-        public static int CalculateAge(
-            this DateTime dob,
-            Leaplings leapling = Leaplings.Feb28,
-            DateTime? presentDate = null)
+        public override string ToString()
         {
-            presentDate ??= DateTime.Now.ToPacificDate();
-            var age = presentDate.Value.Year - dob.Year;
-            
-            // handle the case where dob is in a leap year, present date 
-            //  not a leap year and dob should be celebrated on Feb 28.
-            if (leapling == Leaplings.Feb28 &&
-                !DateTime.IsLeapYear(presentDate.Value.Year) &&
-                DateTime.IsLeapYear(dob.Year) &&
-                dob.DayOfYear == 60 &&
-                presentDate.Value.DayOfYear == 59) return age;
-            
-            // handle all other cases.
-            return (presentDate.Value.DayOfYear < dob.DayOfYear) ? age - 1 : age;
+            return $"{Years}yr., {Months}mos., {Days}d";
         }
     }
+
+        /// <summary>
+        /// Calculate the age of a person based on the date of birth.
+        /// </summary>
+        /// <param name="dob">The date of birth of the person.</param>
+        /// <param name="presentDate">The present date. Defaults to <see cref="DateTime.Now"/>, if not specified.</param>
+        /// <remarks>This function supports leaper DOBs (Feb 29).</remarks>
+        /// <returns>An <see cref="Age"/> object containing years, months and days information.</returns>
+        public static Age CalculateAge(
+            this DateTime dob,
+            DateTime? presentDate = null)
+        {
+            presentDate ??= DateTime.Now;
+            var age = new Age
+            {
+                Years = (ushort)(presentDate.Value.Year - dob.Year)
+            };
+
+            var decrement =
+                !(!DateTime.IsLeapYear(presentDate.Value.Year) &&
+                  DateTime.IsLeapYear(dob.Year) &&
+                  dob.DayOfYear == 60 &&
+                  presentDate.Value.DayOfYear == 59) &&
+                presentDate.Value.DayOfYear < dob.DayOfYear;
+
+            if (decrement) { age.Years -= 1; }
+
+            var tempDt = dob.AddYears(age.Years);
+            if (decrement) { age.Months = 11; }
+
+            age.Months += (byte)(presentDate.Value.Month - tempDt.Month);
+            if (tempDt.AddMonths(age.Months) > presentDate.Value) { age.Months -= 1; }
+
+            tempDt = tempDt.AddMonths(age.Months);
+            age.Days = (byte)presentDate.Value.Subtract(tempDt).Days;
+            
+            return age;
+        }
 }
