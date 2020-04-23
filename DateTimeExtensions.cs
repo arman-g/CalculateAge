@@ -28,7 +28,7 @@ namespace example.Extensions
             presentDate ??= DateTime.Now.ToPacificDate();
             var age = presentDate.Value.Year - dob.Year;
             
-            // handle the case were dob is in a leap year, present date 
+            // handle the case where dob is in a leap year, present date 
             //  not a leap year and dob should be celebrated on Feb 28.
             if (leapling == Leaplings.Feb28 &&
                 !DateTime.IsLeapYear(presentDate.Value.Year) &&
