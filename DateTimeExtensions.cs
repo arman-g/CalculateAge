@@ -21,7 +21,8 @@ namespace example.Extensions
         /// <param name="leapling">Indicates the leap birth celebration day.</param>
         /// <param name="presentDate">The present date. If not set defaults to <see cref="DateTime.Now"/>.</param>
         /// <returns>The age of the person in number of years.</returns>
-        public static int CalculateAge(this DateTime dob,
+        public static int CalculateAge(
+            this DateTime dob,
             Leaplings leapling = Leaplings.Feb28,
             DateTime? presentDate = null)
         {
