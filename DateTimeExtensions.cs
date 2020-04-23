@@ -37,9 +37,7 @@ namespace example.Extensions
                 presentDate.Value.DayOfYear == 59) return age;
             
             // handle all other cases.
-            if (presentDate.Value.DayOfYear < dob.DayOfYear) return age - 1;
-
-            return age;
+            return (presentDate.Value.DayOfYear < dob.DayOfYear) ? age - 1 : age;
         }
     }
 }
