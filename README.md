@@ -1,7 +1,7 @@
 # A simple extesion method to calculate a person's age
 ### Features
 * Calculates a person's age and returns years, months and days information.
-* Supports leap years and leaper date of birth (Feb 29)
+* Supports leap years and leaper date of birth (Feb 29).
 
 ### Output
 
