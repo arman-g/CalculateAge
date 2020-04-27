@@ -5,23 +5,26 @@
 
 ### Output
 
-> ###### Age Calculation - Date of Birth 4/22/2000
+> **L** - Leap Year  
+> **N** - Normal Year
 > ```
-> -------- Year 2020 ---------
-> Present Date: 2/17/2020; Age: 19yr., 9mos., 26d
-> Present Date: 4/22/2020; Age: 20yr., 0mos., 0d
-> Present Date: 7/7/2020; Age: 20yr., 2mos., 15d
-> ```
-
-> ###### Age Calculation of Leaplings - Date of Birth 2/29/1960
-> ```
-> -------- Leap Year 2020 ---------
-> Present Date: 2/28/2020; Age: 59yr., 11mos., 31d
-> Present Date: 2/29/2020; Age: 60yr., 0mos., 0d
-> Present Date: 3/1/2020; Age: 60yr., 0mos., 1d
+> -------- General Cases ---------
+> 01/01/2000:L - 01/01/2000:L Age: 0yr., 0mos., 0d
+> 01/01/2000:L - 01/02/2000:L Age: 0yr., 0mos., 1d
+> 01/01/2000:L - 02/01/2000:L Age: 0yr., 1mos., 0d
+> 01/01/2000:L - 12/31/2000:L Age: 0yr., 11mos., 30d
+> 01/01/2000:L - 01/01/2001:N Age: 1yr., 0mos., 0d
+> 04/22/2001:N - 10/27/2019:N Age: 18yr., 6mos., 5d
+> 04/22/2001:N - 01/01/2020:L Age: 18yr., 8mos., 10d
+> 04/22/2001:N - 02/17/2020:L Age: 18yr., 9mos., 26d
+> 04/22/2001:N - 04/22/2020:L Age: 19yr., 0mos., 0d
+> 04/22/2001:N - 07/07/2020:L Age: 19yr., 2mos., 15d
 > 
-> -------- Normal Year 2021 --------
-> Present Date: 2/27/2021; Age: 60yr., 11mos., 29d
-> Present Date: 2/28/2021; Age: 61yr., 0mos., 0d
-> Present Date: 3/1/2021; Age: 61yr., 0mos., 1d
+> -------- Special  Cases (Feb 29) ---------
+> 02/29/1960:L - 02/28/2020:L Age: 59yr., 11mos., 30d
+> 02/29/1960:L - 02/29/2020:L Age: 60yr., 0mos., 0d
+> 02/29/1960:L - 03/01/2020:L Age: 60yr., 0mos., 1d
+> 02/29/1960:L - 02/27/2021:N Age: 60yr., 11mos., 29d
+> 02/29/1960:L - 02/28/2021:N Age: 61yr., 0mos., 0d
+> 02/29/1960:L - 03/01/2021:N Age: 61yr., 0mos., 1d
 > ```
