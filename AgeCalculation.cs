@@ -1,21 +1,25 @@
-[DebuggerDisplay(
+using System;
+
+namespace age.calculation.example
+{
+	[DebuggerDisplay(
 	nameof(Years) + " = {" + nameof(Years) + "}, " +
 	nameof(Months) + " = {" + nameof(Months) + "}, " +
 	nameof(Days) + " = {" + nameof(Days) + "}")]
-public class Age
-{
-	public ushort Years { get; set; }
-	public byte Months { get; set; }
-	public byte Days { get; set; }
-
-	public override string ToString()
+	public class Age
 	{
-		return $"{Years}yr., {Months}mos., {Days}d";
-	}
-}
+		public ushort Years { get; set; }
+		public byte Months { get; set; }
+		public byte Days { get; set; }
 
-public static class DateTimeExtensions
-{
+		public override string ToString()
+		{
+			return $"{Years}yr., {Months}mos., {Days}d";
+		}
+	}
+
+    public static class DateTimeExtensions
+    {
         /// <summary>
         /// Indicates whether this date is in leap year.
         /// </summary>
@@ -38,9 +42,9 @@ public static class DateTimeExtensions
             DateTime? presentDate = null)
         {
             presentDate ??= DateTime.Now.ToPacificDate();
-            if (presentDate < dob) throw new ArgumentOutOfRangeException(
-                nameof(presentDate),
-                "Present date must be bigger than DOB.");
+            if (dob > presentDate) throw new ArgumentOutOfRangeException(
+                nameof(dob),
+                "DOB must be less or equal to the present date.");
 
             const byte maxMonths = 12;
             const byte feb28 = 59;
@@ -78,7 +82,7 @@ public static class DateTimeExtensions
             var presentMonth = dob.Month + age.Months;
             if (presentMonth > maxMonths)
             {
-                presentMonth = Math.Abs(dob.Month + age.Months - maxMonths);
+                presentMonth = Math.Abs(presentMonth - maxMonths);
             }
 
             if (presentMonth == presentDate.Value.Month)
@@ -95,4 +99,5 @@ public static class DateTimeExtensions
 
             return age;
         }
+    }
 }
