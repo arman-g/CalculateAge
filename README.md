@@ -4,10 +4,9 @@
 * Supports leap years and leaper date of birth (Feb 29).
 
 ### Output
-
-> **L** - Leap Year  
-> **N** - Normal Year
 > ```
+> 'L' - Leap Year, 'N' - Normal Year
+> 
 > -------- General Cases ---------
 > 01/01/2000:L - 01/01/2000:L Age: 0yr., 0mos., 0d
 > 01/01/2000:L - 01/02/2000:L Age: 0yr., 0mos., 1d
