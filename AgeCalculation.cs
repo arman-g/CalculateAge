@@ -2,21 +2,21 @@ using System;
 
 namespace age.calculation.example
 {
-	[DebuggerDisplay(
-	nameof(Years) + " = {" + nameof(Years) + "}, " +
-	nameof(Months) + " = {" + nameof(Months) + "}, " +
-	nameof(Days) + " = {" + nameof(Days) + "}")]
-	public class Age
-	{
-		public ushort Years { get; set; }
-		public byte Months { get; set; }
-		public byte Days { get; set; }
+    [DebuggerDisplay(
+    nameof(Years) + " = {" + nameof(Years) + "}, " +
+    nameof(Months) + " = {" + nameof(Months) + "}, " +
+    nameof(Days) + " = {" + nameof(Days) + "}")]
+    public class Age
+    {
+	public ushort Years { get; set; }
+	public byte Months { get; set; }
+	public byte Days { get; set; }
 
-		public override string ToString()
-		{
-			return $"{Years}yr., {Months}mos., {Days}d";
-		}
+	public override string ToString()
+	{
+	return $"{Years}yr., {Months}mos., {Days}d";
 	}
+    }
 
     public static class DateTimeExtensions
     {
