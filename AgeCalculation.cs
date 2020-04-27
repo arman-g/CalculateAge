@@ -44,7 +44,7 @@ namespace age.calculation.example
             presentDate ??= DateTime.Now.ToPacificDate();
             if (dob > presentDate) throw new ArgumentOutOfRangeException(
                 nameof(dob),
-                "DOB must be less or equal to the present date.");
+                "DOB must be less or equal from present date.");
 
             const byte maxMonths = 12;
             const byte feb28 = 59;
