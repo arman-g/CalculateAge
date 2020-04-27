@@ -79,20 +79,20 @@ namespace age.calculation.example
             }
 
             // calculate the days of age
-            var presentMonth = dob.Month + age.Months;
-            if (presentMonth > maxMonths)
+            var currentMonth = dob.Month + age.Months;
+            if (currentMonth > maxMonths)
             {
-                presentMonth = Math.Abs(presentMonth - maxMonths);
+                currentMonth = Math.Abs(currentMonth - maxMonths);
             }
 
-            if (presentMonth == presentDate.Value.Month)
+            if (currentMonth == presentDate.Value.Month)
             {
                 age.Days = (byte)(presentDate.Value.Day - (dob.Day - extraDay));
             }
             else
             {
                 age.Days = (byte)(
-                    DateTime.DaysInMonth(dob.Year + age.Years, presentMonth) -
+                    DateTime.DaysInMonth(dob.Year + age.Years, currentMonth) -
                     (dob.Day - (hasDobOccur ? extraDay : 0)) +
                     presentDate.Value.Day);
             }
