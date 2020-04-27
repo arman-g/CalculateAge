@@ -1,4 +1,4 @@
-# A simple extesion method to calculate a person's age
+# A simple extesion method to calculate the years, months and days between two dates. Perfect for calculating a person age.
 ### Features
 * Calculates a person's age and returns years, months and days information.
 * Supports leap years and leaper date of birth (Feb 29).
